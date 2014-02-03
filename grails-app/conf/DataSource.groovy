@@ -1,8 +1,7 @@
+import org.hibernate.dialect.MySQL5InnoDBDialect
+
 dataSource {
     pooled = true
-    driverClassName = "org.h2.Driver"
-    username = "sa"
-    password = ""
 }
 hibernate {
     cache.use_second_level_cache = true
@@ -14,41 +13,29 @@ hibernate {
 // environment specific settings
 environments {
     development {
-        dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+        dataSource{
+            dbCreate = "update"
+            driverClassName = 'com.mysql.jdbc.Driver'
+            dialect = MySQL5InnoDBDialect
+            url = "jdbc:mysql://localhost:3306/mockservice?autoReconnect=true&useUnicode=true&characterEncoding=utf8"
+            username = "root"
+            password = "qwerty10"
         }
     }
+
     test {
         dataSource {
             dbCreate = "update"
             url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
         }
     }
-//    production {
-//        dataSource {
-//            dbCreate = "update"
-//            url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
-//            properties {
-//               maxActive = -1
-//               minEvictableIdleTimeMillis=1800000
-//               timeBetweenEvictionRunsMillis=1800000
-//               numTestsPerEvictionRun=3
-//               testOnBorrow=true
-//               testWhileIdle=true
-//               testOnReturn=false
-//               validationQuery="SELECT 1"
-//               jdbcInterceptors="ConnectionState"
-//            }
-//        }
-//    }
 
     //OpenShfit web hosting settings
     production {
         dataSource {
             dbCreate = "update"
             driverClassName = 'com.mysql.jdbc.Driver'
-            dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+            dialect = MySQL5InnoDBDialect
 
             String host = System.getenv('OPENSHIFT_MYSQL_DB_HOST')
             String port = System.getenv('OPENSHIFT_MYSQL_DB_PORT')

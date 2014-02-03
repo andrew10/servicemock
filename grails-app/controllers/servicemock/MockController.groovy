@@ -1,11 +1,15 @@
 package servicemock
 
 import grails.converters.JSON
-import org.codehaus.groovy.grails.validation.routines.UrlValidator
+
+import javax.servlet.http.HttpServletResponse
 
 class MockController {
 
     static scaffold = Mock
+
+    static allowedMethods = [renderResponse: ['POST', 'DELETE', 'GET', 'PUT', 'DELETE', 'HEAD', 'TRACE', 'OPTIONS',
+            'CONNECT', 'PATCH']]
 
     def index() {
         redirect(action: "list")
@@ -77,16 +81,18 @@ class MockController {
 
     def renderResponse() {
         def mockURL = request.forwardURI
-        def method = request.method
+        def method = RequestMethod.valueOf(request.method)
+
         if (request.queryString) {
             mockURL = mockURL + "?${request.queryString}"
         }
 
-        def mock = Mock.findByUrl(mockURL)
-        if (!mock || mock.method.toString() != method) {
-            return render(status: 404)
+        def mock = Mock.findByUrlAndMethod(mockURL, method)
+        if (!mock) {
+            return render(status: HttpServletResponse.SC_NOT_FOUND)
         }
 
-        render(mock.response) as JSON
+        def response = mock.response
+        response ? render(response) as JSON : render(status: HttpServletResponse.SC_OK)
     }
 }

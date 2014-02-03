@@ -23,12 +23,14 @@ class UtilsTagLib {
      * Truncates large string.
      */
     def slasher = { attrs ->
-        if (!attrs.str) throw new IllegalArgumentException("Attribute [str] should be specified for the tag [u:slasher]")
-        if (!attrs.limit) throw new IllegalArgumentException("Attribute [limit] should be specified for the tag [u:slasher]")
+        def text = attrs.str
+        def result = ""
+        if (text) {
+            int limit = attrs.int('limit') ?: 400
+            result = "${text.size() < limit ? text : text.substring(0, limit) + '...'}"
+        }
 
-        String str = attrs.remove('str')
-        int limit = attrs.int('limit')
-        out << "${str.size() < limit ? str : str.substring(0, limit) + '...'}"
+        out << result
     }
 
     /**

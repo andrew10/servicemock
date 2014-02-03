@@ -29,7 +29,7 @@
         <tr>
             <th>URL</th>
             <th>Response</th>
-            <th width="8%">Method</th>
+            <th width="12%">Method</th>
             <th width="8%">Actions</th>
         </tr>
         </thead>
@@ -38,7 +38,7 @@
         <g:each in="${mockInstanceList}" var="mock">
             <tr>
                 <td>${grailsApplication.config.mock.serverURL}<g:fieldValue field="url" bean="${mock}"/></td>
-                <td><u:slasher str="${mock.response}" limit="400"/></td>
+                <td><u:slasher str="${mock?.response}" limit="400"/></td>
                 <td>${mock.method}</td>
                 <td>
                     <g:link action="edit" id="${mock.id}">
