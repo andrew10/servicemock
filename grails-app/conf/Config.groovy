@@ -95,6 +95,10 @@ environments {
         mock.serverURL = "http://mockservice-servicemock.rhcloud.com"
         // TODO: grails.serverURL = "http://www.changeme.com"
     }
+    local{
+        grails.logging.jul.usebridge = true
+        mock.serverURL = "http://localhost:8099"
+    }
 }
 
 // log4j configuration
