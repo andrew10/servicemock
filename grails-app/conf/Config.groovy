@@ -88,16 +88,12 @@ grails.hibernate.cache.queries = false
 environments {
     development {
         grails.logging.jul.usebridge = true
-        mock.serverURL = "http://localhost:8080"
+//        mock.serverURL = "http://localhost:8080"
     }
     production {
         grails.logging.jul.usebridge = false
-        mock.serverURL = "http://mockservice-servicemock.rhcloud.com"
+//        mock.serverURL = "http://mockservice-servicemock.rhcloud.com"
         // TODO: grails.serverURL = "http://www.changeme.com"
-    }
-    local{
-        grails.logging.jul.usebridge = true
-        mock.serverURL = "http://localhost:8099"
     }
 }
 

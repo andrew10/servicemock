@@ -17,23 +17,11 @@ environments {
             dbCreate = "update"
             driverClassName = 'com.mysql.jdbc.Driver'
             dialect = MySQL5InnoDBDialect
-            url = "jdbc:mysql://localhost:3306/mockservice?autoReconnect=true&useUnicode=true&characterEncoding=utf8"
-            username = "root"
-            password = "qwerty10"
-        }
-    }
-
-    local {
-        dataSource{
-            dbCreate = "update"
-            driverClassName = 'com.mysql.jdbc.Driver'
-            dialect = MySQL5InnoDBDialect
             url = "jdbc:mysql://localhost:3306/m_service_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8"
             username = "m_service_user"
             password = "qwerty10"
         }
     }
-
 
     test {
         dataSource {
