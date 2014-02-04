@@ -8,8 +8,7 @@ class MockController {
 
     static scaffold = Mock
 
-    static allowedMethods = [renderResponse: ['POST', 'DELETE', 'GET', 'PUT', 'DELETE', 'HEAD', 'TRACE', 'OPTIONS',
-            'CONNECT', 'PATCH']]
+    static allowedMethods = [renderResponse: ['POST', 'DELETE', 'GET', 'PUT', 'DELETE', 'HEAD', 'OPTIONS', 'PATCH']]
 
     def index() {
         redirect(action: "list")

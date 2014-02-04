@@ -53,10 +53,8 @@ environments {
             String port = System.getenv('OPENSHIFT_MYSQL_DB_PORT')
             String dbName = System.getenv('OPENSHIFT_APP_NAME')
             url = "jdbc:mysql://$host:$port/$dbName"
-//            username = "adminmG49s2n"
-//            password = "mKWD2UvNfg1F"
-            username = System.env.OPENSHIFT_POSTGRESQL_DB_USERNAME
-            password = System.env.OPENSHIFT_POSTGRESQL_DB_PASSWORD
+            username = System.getenv('OPENSHIFT_MYSQL_DB_USERNAME')
+            password = System.getenv('OPENSHIFT_MYSQL_DB_PASSWORD')
         }
     }
 }

@@ -37,7 +37,7 @@
         <tbody>
         <g:each in="${mockInstanceList}" var="mock">
             <tr>
-                <td>${grailsApplication.config.mock.serverURL}<g:fieldValue field="url" bean="${mock}"/></td>
+                <td>${request.hostUrl}<g:fieldValue field="url" bean="${mock}"/></td>
                 <td><u:slasher str="${mock?.response}" limit="400"/></td>
                 <td>${mock.method}</td>
                 <td>

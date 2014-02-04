@@ -7,7 +7,7 @@
     <label class="control-label" for="url">URL:</label>
 
     <div class="controls">
-        <span class="add-on">${grailsApplication.config.mock.serverURL}</span>
+        <span class="add-on">${request.hostUrl}</span>
         <g:textField name="url" bean="${mockInstance}" class="url-field"/>
         <g:hasErrors field="url" bean="${mockInstance}">
             <span class="help-block error-message"><g:fieldError field="url" bean="${mockInstance}"/></span>
