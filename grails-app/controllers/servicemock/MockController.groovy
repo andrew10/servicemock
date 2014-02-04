@@ -1,12 +1,12 @@
 package servicemock
 
 import grails.converters.JSON
+import grails.transaction.Transactional
 
 import javax.servlet.http.HttpServletResponse
 
+@Transactional(readOnly = true)
 class MockController {
-
-    static scaffold = Mock
 
     static allowedMethods = [renderResponse: ['POST', 'DELETE', 'GET', 'PUT', 'DELETE', 'HEAD', 'OPTIONS', 'PATCH']]
 
@@ -14,7 +14,8 @@ class MockController {
         redirect(action: "list")
     }
 
-    def list() {
+    def list(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
         render(view: 'list', model: [mockInstanceList: Mock.list(params), mockInstanceTotal: Mock.count])
     }
 
@@ -22,6 +23,7 @@ class MockController {
         render(view: 'create')
     }
 
+    @Transactional
     def save() {
         def mockInstance = new Mock(params)
         if (!mockInstance.save(flush: true)) {
@@ -43,6 +45,7 @@ class MockController {
         render(view: 'edit', model: [mockInstance: mockInstance])
     }
 
+    @Transactional
     def update(Long id) {
         def mockInstance = Mock.get(id)
         if (!mockInstance) {
@@ -60,6 +63,7 @@ class MockController {
         redirect(action: 'list')
     }
 
+    @Transactional
     def delete(Long id) {
         def mock = Mock.get(id)
 
