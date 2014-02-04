@@ -82,7 +82,7 @@ Well, Now we can deploy application:
 
 - Go to application directory and package *servicemock* into a war file:
 
-    `grails prod target/ROOT.war`
+    `grails prod war target/ROOT.war`
 
 - Copy ROOT.war to your OpenShift mockservice application webapps folder.
 
