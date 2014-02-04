@@ -37,7 +37,7 @@ target="_blank">JDK</a>
 
 Go to the application directory and run this grails command:
 
-    grails local -Dserver.port=8099 run-app
+    grails -Dserver.port=8099 run-app
 
 After that you can view *servicemock* by pointing a web browser to http://localhost:8099.
 
