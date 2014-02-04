@@ -97,4 +97,4 @@ After code is pushed and war is successfully deployed, we can view the applicati
 http://mockservice-{domain-name}.rhcloud.com.
 
 A functional demo of the resulting project is available for review
-<a href="http://http://mockservice-servicemock.rhcloud.com">here</a>.
+<a href="http://mockservice-servicemock.rhcloud.com">here</a>.
