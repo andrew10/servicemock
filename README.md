@@ -37,7 +37,7 @@ target="_blank">JDK</a>
 
 Go to the application directory and run this grails command:
 
-    grails local -Dserver.port=8099 run-app
+    grails -Dserver.port=8099 run-app
 
 After that you can view *servicemock* by pointing a web browser to http://localhost:8099.
 
@@ -97,4 +97,4 @@ After code is pushed and war is successfully deployed, we can view the applicati
 http://mockservice-{domain-name}.rhcloud.com.
 
 A functional demo of the resulting project is available for review
-<a href="http://http://mockservice-servicemock.rhcloud.com">here</a>.
+<a href="http://mockservice-servicemock.rhcloud.com">here</a>.
