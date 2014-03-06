@@ -74,4 +74,15 @@ class UtilsTagLib {
                 action: action, controller: controller, body: body(), cancelLabel: cancelLabel,
                 confirmLabel: confirmLabel, params: params])
     }
+
+    /**
+     * Renders radio group field
+     */
+    def radioGroup = { attrs, body ->
+        def active = attrs.remove('active')
+        def items = attrs.remove('items')
+        def fieldName = attrs.remove('name')
+
+        out << render(template: "/taglib/radioGroup", model: [items: items, active: active, fieldName: fieldName])
+    }
 }

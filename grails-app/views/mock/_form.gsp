@@ -19,14 +19,8 @@
     <label class="control-label" for="url">Method:</label>
 
     <div class="controls">
-        <div class="btn-group" data-toggle="buttons-radio">
-            <g:each in="${RequestMethod.values().collect { it.name() }}" var="method">
-                <button type="button" class="btn ${mockInstance?.method?.toString() == method ? 'active' : ''}"
-                        onclick="$('#hidden-method-field').attr('value', '${method}')">
-                    ${method}</button>
-            </g:each>
-            <g:hiddenField name="method" id="hidden-method-field" value="${mockInstance?.method}"/>
-        </div>
+        <u:radioGroup name="method" active="${mockInstance?.method?.toString()}"
+                      items="${RequestMethod.values().collect { it.name() }}"/>
         <g:hasErrors field="method" bean="${mockInstance}">
             <span class="help-block error-message"><g:fieldError field="method" bean="${mockInstance}"/></span>
         </g:hasErrors>
