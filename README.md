@@ -97,4 +97,4 @@ After code is pushed and war is successfully deployed, we can view the applicati
 http://mockservice-{domain-name}.rhcloud.com.
 
 A functional demo of the resulting project is available for review
-<a href="http://mockservice-servicemock.rhcloud.com">here</a>.
+<a href="http://mockservice-servicemock.rhcloud.com">here</a>. (Please note that on the free plan, OpenShift will idle any gears that have not received an external HTTP request or git push in 2 days. So you could get "503 Service Temporarily Unavailable" when you tried the link. In this case just refresh page few times.)
